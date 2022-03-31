@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:sparshtandon_v6000/util/colors.dart';
+
+import '../util/colors.dart';
+
 
 
 

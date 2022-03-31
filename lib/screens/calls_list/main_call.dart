@@ -20,6 +20,7 @@ class _CallsHomeState extends State<CallsHome> {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.call,
+          color: Colors.white,
         ),
         backgroundColor: ColorFile.teal_green,
         onPressed: (){},
@@ -38,8 +39,8 @@ class _CallsHomeState extends State<CallsHome> {
                   Text(Calls[index]["subtitle"])
                 ],
               ),
-              leading: CircleAvatar(backgroundImage: AssetImage(Calls[index]["image"]),
-                ),
+              leading: CircleAvatar(child: Icon(Icons.person,),
+              ),
               trailing: Icon(Icons.call,
                 color: ColorFile.teal_green,)
           )),

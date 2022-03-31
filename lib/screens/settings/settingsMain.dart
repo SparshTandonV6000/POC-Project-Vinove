@@ -1,11 +1,16 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:sparshtandon_v6000/screens/chats_list/main_chat.dart';
-import 'package:sparshtandon_v6000/screens/whatsapp_home.dart';
-import 'package:sparshtandon_v6000/util/colors.dart';
+import 'package:project_sparshtandon_v6000/screens/settings/manage_storage.dart';
+import 'package:project_sparshtandon_v6000/screens/settings/profile.dart';
 
 import '../../constants/data.dart';
+import '../../widgets/languagehanger.dart';
+import '../../util/colors.dart';
 import '../../widgets/settingoption.dart';
 import 'account_page.dart';
+import 'help.dart';
+import 'notifications.dart';
+
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({Key? key}) : super(key: key);
@@ -22,10 +27,10 @@ class SettingsScreen extends StatelessWidget {
         ),
         backgroundColor: ColorFile.teal_green,
         leading: IconButton(
-            icon: Icon(Icons.arrow_back),
+            icon: Icon(Icons.arrow_back,
+            color: Colors.white,),
             onPressed: () {
-              Navigator.of(context)
-                  .pop();
+              Navigator.of(context).pop();
             }),
       ),
       body: Column(
@@ -42,9 +47,16 @@ class SettingsScreen extends StatelessWidget {
                   ),
                 ],
               ),
-              title: Text(
-                "Sparsh Tandon",
-                style: TextStyle(fontWeight: FontWeight.bold),
+              title: GestureDetector(
+                onTap: (){    Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => ProfileScreen(),
+                  ),
+                ); },
+                child: Text(
+                    FirebaseAuth.instance.currentUser!.displayName.toString(),
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
               ),
               subtitle: Text("Avaliable"),
             ),
@@ -60,7 +72,7 @@ class SettingsScreen extends StatelessWidget {
               onTap: () {
                 Navigator.of(context).push(
                   MaterialPageRoute(
-                    builder: (context) => const AccountPage(),
+                    builder: (context) => const AccountPage(title: '',),
                   ),
                 );
               }),
@@ -71,7 +83,7 @@ class SettingsScreen extends StatelessWidget {
               onTap: () {
                 Navigator.of(context).push(
                   MaterialPageRoute(
-                    builder: (context) =>  AccountPage(),
+                    builder: (context) => ChatsSetting(),
                   ),
                 );
               }),
@@ -82,7 +94,7 @@ class SettingsScreen extends StatelessWidget {
               onTap: () {
                 Navigator.of(context).push(
                   MaterialPageRoute(
-                    builder: (context) => const AccountPage(),
+                    builder: (context) => Notifications(),
                   ),
                 );
               }),
@@ -93,7 +105,7 @@ class SettingsScreen extends StatelessWidget {
               onTap: () {
                 Navigator.of(context).push(
                   MaterialPageRoute(
-                    builder: (context) => const AccountPage(),
+                    builder: (context) => const ManageStorage(),
                   ),
                 );
               }),
@@ -104,7 +116,7 @@ class SettingsScreen extends StatelessWidget {
               onTap: () {
                 Navigator.of(context).push(
                   MaterialPageRoute(
-                    builder: (context) => const AccountPage(),
+                    builder: (context) => Help(),
                   ),
                 );
               }),
@@ -114,7 +126,7 @@ class SettingsScreen extends StatelessWidget {
               onTap: () {
                 Navigator.of(context).push(
                   MaterialPageRoute(
-                    builder: (context) => const AccountPage(),
+                    builder: (context) => const AccountPage(title: '',),
                   ),
                 );
               }),

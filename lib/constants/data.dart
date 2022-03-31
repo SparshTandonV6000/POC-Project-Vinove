@@ -32,7 +32,7 @@ List whatsapp = [
   {
     "title": "Aditya",
     "subtitle": "Hello Bhai",
-    "image": "assets/images/img_avatar.png",
+    "image": "assets/images/download.jpg",
     "trailing": "11:06 AM"
   },
   {
@@ -53,12 +53,12 @@ List whatsapp = [
     "image": "assets/images/img_avatar.png",
     "trailing": "5:40 PM"
   },
-  {
-    "title": "Ananya",
-    "subtitle": "Hello",
-    "image": "assets/images/img_avatar.png",
-    "trailing": "6:30 PM"
-  },
+  // {
+  //   "title": "Ananya",
+  //   "subtitle": "Hello",
+  //   "image": "images/img_avatar.png",
+  //   "trailing": "6:30 PM"
+  // },
 ];
 
 const chatdata = [
@@ -287,5 +287,104 @@ List accountpage = [
 
   },
 
+
+];
+
+List account1 = [
+  {
+    "title": "Notofication tone",
+    "subtitle": "NotificationXyloPhone.ogg",
+
+  },
+  {
+    "title": "Vibrate",
+    "subtitle": "Default",
+
+  },
+  {
+    "title": "Popup Notifications",
+    "subtitle": "No Popup",
+
+  },
+  {
+    "title": "Light",
+    "subtitle": "White",
+
+  },
+];
+
+List account2 = [
+  {
+    "title": "Notofication tone",
+    "subtitle": "NotificationXyloPhone.ogg",
+
+  },
+  {
+    "title": "Vibrate",
+    "subtitle": "Default",
+
+  },
+
+];
+
+List help = [
+  {
+    "title": "Help Center",
+    "subtitle": "",
+    "image":  Icon(Icons.help_outline_outlined)
+
+  },
+  {
+    "title": "Contact Us",
+    "subtitle": "Questions ? Need Help ?",
+    "image":   Icon(Icons.group)
+
+  },
+  {
+    "title": "Terms and Privacy Policy",
+    "subtitle": "",
+    "image":  Icon(Icons.privacy_tip)
+
+  },
+  {
+    "title": "App Info",
+    "subtitle": "",
+    "image":  Icon(Icons.info_outline)
+
+  },
+
+
+];
+
+List display = [
+  {
+    "title": "Theme",
+    "subtitle": "",
+    "image":  Icon(Icons.wb_sunny_outlined)
+
+  },
+  {
+    "title": "Wallpaper",
+    "subtitle": "Questions ? Need Help ?",
+    "image":   Icon(Icons.wallpaper)
+
+  },
+
+
+];
+
+List storagepage = [
+{
+"title": "Manage Storage",
+"subtitle": "2.33 GB",
+"image":  Icon(Icons.folder)
+
+},
+{
+"title": "Network Usage",
+"subtitle": "7.8 MB Sent, 3.56 GB Recieved",
+"image":   Icon(Icons.security)
+
+},
 
 ];

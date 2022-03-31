@@ -3,20 +3,20 @@ import 'package:flutter/material.dart';
 import '../../constants/data.dart';
 import '../../util/colors.dart';
 
-class AccountPage extends StatefulWidget {
-  const AccountPage({Key? key,  required String title}) : super(key: key);
+class ManageStorage extends StatefulWidget {
+  const ManageStorage({Key? key}) : super(key: key);
 
   @override
-  _AccountPageState createState() => _AccountPageState();
+  _ManageStorageState createState() => _ManageStorageState();
 }
 
-class _AccountPageState extends State<AccountPage> {
+class _ManageStorageState extends State<ManageStorage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Account',
+          'Manage Your Storage And Data',
           style: TextStyle(
             color: Colors.white,
           ),
@@ -34,11 +34,11 @@ class _AccountPageState extends State<AccountPage> {
           Expanded(
             child: ListView.builder(
               //shrinkWrap: true,
-              itemCount: accountpage.length,
+              itemCount: storagepage.length,
               itemBuilder: (context, index) => ListTile(
-                title: Text(accountpage[index]["title"]),
-                //subtitle: Text(settings[index]["subtitle"]),
-                leading: accountpage[index]["image"],
+                title: Text(storagepage[index]["title"]),
+                subtitle: Text(storagepage[index]["subtitle"]),
+                leading: storagepage[index]["image"],
               ),
             ),
           ),

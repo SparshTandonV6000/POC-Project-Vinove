@@ -3,20 +3,20 @@ import 'package:flutter/material.dart';
 import '../../constants/data.dart';
 import '../../util/colors.dart';
 
-class AccountPage extends StatefulWidget {
-  const AccountPage({Key? key,  required String title}) : super(key: key);
+class Help extends StatefulWidget {
+  const Help({Key? key}) : super(key: key);
 
   @override
-  _AccountPageState createState() => _AccountPageState();
+  _HelpState createState() => _HelpState();
 }
 
-class _AccountPageState extends State<AccountPage> {
+class _HelpState extends State<Help> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
+      appBar:  AppBar(
         title: Text(
-          'Account',
+          'Notifications',
           style: TextStyle(
             color: Colors.white,
           ),
@@ -34,16 +34,18 @@ class _AccountPageState extends State<AccountPage> {
           Expanded(
             child: ListView.builder(
               //shrinkWrap: true,
-              itemCount: accountpage.length,
+              itemCount: help.length,
               itemBuilder: (context, index) => ListTile(
-                title: Text(accountpage[index]["title"]),
-                //subtitle: Text(settings[index]["subtitle"]),
-                leading: accountpage[index]["image"],
+                title: Text(help[index]["title"]),
+                //subtitle: Text(help[index]["subtitle"]),
+                leading: help[index]["image"],
               ),
             ),
           ),
         ],
       ),
+
+
     );
   }
 }

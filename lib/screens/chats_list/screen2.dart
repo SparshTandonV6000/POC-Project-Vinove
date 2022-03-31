@@ -1,20 +1,21 @@
+
 import 'package:flutter/material.dart';
 
-
-
-import '../../constants/chatMessage.dart';
 import 'package:firebase_auth/firebase_auth.dart' as auth;
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:project_sparshtandon_v6000/util/colors.dart';
 
-import '../../util/colors.dart';
+import '../../constants/chatMessage.dart';
 import '../../widgets/chatstyle.dart';
+
 
 final _firestore = FirebaseFirestore.instance;
 late auth.User loggedInUser;
 
 class ChatScreen extends StatefulWidget {
   final String name;
-  ChatScreen({Key? key, required this.name, imagePath}) : super(key: key);
+  final String imagepath;
+  ChatScreen({Key? key, required this.name, required this.imagepath, imagePath}) : super(key: key);
 
   @override
   _ChatScreenState createState() => _ChatScreenState();
@@ -228,7 +229,7 @@ class _ChatScreenState extends State<ChatScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: ColorFile.teal_green,
+        backgroundColor: ColorFile.teal_green_dark,
         actions: [
           Icon(Icons.videocam_rounded),
           SizedBox(

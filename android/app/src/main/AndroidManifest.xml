@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.sparshtandon_v6000">
+    package="com.example.project_sparshtandon_v6000">
    <application
-        android:label="sparshtandon_v6000"
+        android:label="project_sparshtandon_v6000"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

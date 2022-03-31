@@ -1,68 +1,89 @@
-
+import 'package:camera/camera.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:project_sparshtandon_v6000/widgets/prfrences.dart';
 
-import 'package:sparshtandon_v6000/scratch.dart';
-import 'package:sparshtandon_v6000/screens/whatsapp_home.dart';
+import 'package:project_sparshtandon_v6000/screens/settings/notifications.dart';
+import 'package:project_sparshtandon_v6000/screens/whatsapp_home.dart';
 
-import 'localization/localizationDelegate.dart';
+import 'package:project_sparshtandon_v6000/welcom_screen/signin.dart';
+import 'package:project_sparshtandon_v6000/welcom_screen/welcom.dart';
 
-//late List<CameraDescription> cameras;
-void main()async {
-  //WidgetsFlutterBinding.ensureInitialized();
+import 'localisation/app_localization_deligate.dart';
 
- // cameras = await availableCameras();
-  runApp(const MyApp());
+List<CameraDescription> cameras = [];
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  Firebase.initializeApp();
+  cameras = await availableCameras();
+  print("cameras$cameras");
+  Preference.load().then((value) {
+    runApp(MyApp());
+  });
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+class MyApp extends StatefulWidget {
+  static void setLocale(BuildContext context, Locale newLocale) {
+    var state = context.findAncestorStateOfType<_MyAppState>();
+    state?.setLocale(newLocale);
+  }
 
-  // This widget is the root of your application.
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  Locale? _locale;
+
+  void setLocale(Locale locale) {
+    setState(() {
+      _locale = locale;
+    });
+  }
+
+  @override
+  void initState() {
+    var lang = Preference.getString(Preference.language, def: "en");
+    _locale = Locale(lang ?? "en");
+    super.initState();
+  }
+
+  @override
+  void didChangeDependencies() {
+    var lang = Preference.getString(Preference.language, def: "en");
+    _locale = Locale(lang ?? "en");
+    super.didChangeDependencies();
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-
-      // locale: _locale,
-      // supportedLocales: [
-      //   Locale('En',''),
-      //   Locale('Sp',''),
-      // ],
-      localizationsDelegates: [
-        DefaultMaterialLocalizations.delegate,
-        DefaultWidgetsLocalizations.delegate,
-        LocalizationDelegate()
-      ],
-      // localeResolutionCallback: (locale, supportedLocales) {
-      //   for (var supportedLocale in supportedLocales) {
-      //     if (supportedLocale.languageCode == locale?.languageCode) {
-      //       _locale = supportedLocale;
-      //       return supportedLocale;
-      //     }
-      //   }
-      //   return supportedLocales.first;
-      // },
-      title: 'Flutter Demo',
-      debugShowCheckedModeBanner: true,
-
-     // onGenerateTitle: (context) {
-        //var t = AppLocalizations.of(context);
-        //return t.apptittle;
-      //},
-
-      theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
-        primarySwatch: Colors.blue,
-      ),
-      home: Scratch(),
-    );
+        title: 'WhatsApp Clone',
+        locale: _locale,
+        supportedLocales: [
+          Locale('en', ''),
+          Locale('fr', ''),
+        ],
+        localizationsDelegates: [
+          AppLocalizationsDelegate(),
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+        ],
+        localeResolutionCallback: (locale, supportedLocales) {
+          for (var supportedLocale in supportedLocales) {
+            if (supportedLocale.languageCode == locale?.languageCode) {
+              _locale = supportedLocale;
+              return supportedLocale;
+            }
+          }
+          return supportedLocales.first;
+        },
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          primarySwatch: Colors.grey, //here is where the error resides
+        ),
+        home: WelcomeScreen(title: '',));
   }
 }
-
